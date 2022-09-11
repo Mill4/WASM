@@ -1,0 +1,28 @@
+﻿@inherits PokemonStatsTableBase
+
+@if (PokeStats != null)
+{
+    <table>
+        <tr>
+            <th>Abilities</th>
+            <th>Forms</th>
+        </tr>
+
+        <tr>
+            <td>
+               @foreach (var ab in PokeStats.abilities)
+               {
+                   <p>@ab.ability.name</p>
+               }
+            </td>
+            <td>
+                @foreach (var f in PokeStats.forms)
+                {
+                    <p>@f.name</p>
+                }
+            </td>
+        </tr>
+
+
+    </table>
+}

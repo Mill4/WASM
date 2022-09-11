@@ -1,0 +1,32 @@
+﻿@inherits EventsTableBase
+
+<h3>Pokemons</h3>
+
+<button @onclick="() =>Test(APIData.results)">Calculate</button>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Stats</th>
+    </tr>
+
+    @foreach (var item in APIData.results)
+    {
+<tr>
+    <td>@item.name</td>
+    @if (PokeStats.TryGetValue(item.name, out PokemonStats stats))
+    {
+        <td>
+            <PokemonStatsTable PokeStats="@stats"></PokemonStatsTable>
+        </td>
+    }
+    else
+    {
+        <td><button @onclick="() =>GetPokemonStats(item.url, item.name)">Get stats</button></td>
+    }
+
+</tr>
+    }
+
+</table>
+
